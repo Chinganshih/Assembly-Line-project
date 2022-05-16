@@ -1,0 +1,12 @@
+// ------------------------------------------------------
+//Workshop 2 part 2
+//Name   : chinganshih
+//ID     : 148221195
+//Email  : cshih9@myseneca.ca
+//Section: OOP345 NEE
+//-----------------------------------------------------------
+
+In workshop2, I have faced many questions and errors. I declare std::string sequence[] in ProteinDatabase.h file. While loading data into sequence, I got an error about accessing failed. The problem is that I shouldn・t add square brackets after a single dimensional array. After removing it, problem had been fixed. Also, we have learnt how to use std::chrono library to store time. In the beginning, I was confused how to declare it. After reading a lot of document online, I realized that it・s like type(int, double), so we just need to add our variable name behind type. Meanwhile, while printing out the duration, I got an error ：no operator matches these operand；. The reason is that it can・t be printed in duration format, so I should add .count() after duration variable., and it worked well.
+In part 2, we implement move constructor and move assignment. The copy operator does duplicate a new file or data to another location without affecting the original data. On the other hand, move operator is to transfer the original data to another location. It will copy address to the current object, yet copy won・t. After completing workshop 2, I did learn a lot of new function, such as erase(), remove(), move operator, std::chrono.
+ 
+

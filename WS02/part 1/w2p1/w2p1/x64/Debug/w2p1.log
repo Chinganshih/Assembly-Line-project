@@ -1,0 +1,4 @@
+﻿  ProteinDatabase.cpp
+D:\Anna_Git\OOP345\WS02\part 1\w2p1\w2p1\ProteinDatabase.cpp(75,8): warning C4101: 'i': unreferenced local variable
+D:\Anna_Git\OOP345\WS02\part 1\w2p1\w2p1\ProteinDatabase.cpp(103,7): warning C4101: 'i': unreferenced local variable
+  w2p1.vcxproj -> D:\Anna_Git\OOP345\WS02\part 1\w2p1\x64\Debug\w2p1.exe
