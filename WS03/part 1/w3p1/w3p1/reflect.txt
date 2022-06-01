@@ -1,0 +1,10 @@
+// ------------------------------------------------------
+//Workshop 3 reflection
+//Name   : chinganshih
+//ID     : 148221195
+//Email  : cshih9@myseneca.ca
+//Section: OOP345 NEE
+//-----------------------------------------------------------
+In workshop 3, we did not split a module into *.h and *.cpp file, after researching from multiple online sources, there might be a reason that the template should be instantiated by the complier before compiling them into object. Also, the instantiation can only be run when the template arguments are known. For this reason, we define all definitions and implementations in the header file. 
+Next, we should create a static data member declaration in a class template which requires a complementary template declaration to define the family of class variables. I initialize the class variable called dummy ¡§Pair Collection<Pair, 100>::dummy = Pair("No Key", "No Value");¡¨ outside the class definition, and declare ¡§static Pair dummy;¡¨ inside a template specialization as a class variable. Meanwhile, we should create a template specialization for the dummy object when type T = Pair and capacity = 100, and define the key and value of dummy. 
+We define T as ¡§Pair¡¨ and capacity as ¡§100¡¨ directly in our template specialization ¡§template <> class Collection<Pair, 100>¡¨. and redefine all related function inside class. Another specialization is necessary for add() member function, because it will execute the function std::fabs to calculate the difference between two number in operator-() when T = ¡§double¡¨. The template will be ¡§template<> class Set<double>:public Collection<double, 100> { bool add(const double& item) {..}}. While comparing two data, I didn¡¦t create operator overloading for different data type in the beginning, so I got an error while comparing two numbers. After that, I create operator==() and operator-() in Pair.cpp to run comparison. Through this workshop, it helps me understand more about template and which part I should improve and which I should build first before comparison different data type.

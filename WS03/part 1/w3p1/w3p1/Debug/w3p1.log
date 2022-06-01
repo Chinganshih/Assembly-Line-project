@@ -1,0 +1,19 @@
+﻿  w3_p2.cpp
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(148,61): error C2662: 'const std::string &sdds::Pair::getKey(void)': cannot convert 'this' pointer from 'const sdds::Pair' to 'sdds::Pair &'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(148,52): message : Conversion loses qualifiers
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\Pair.h(19,22): message : see declaration of 'sdds::Pair::getKey'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(149,63): error C2662: 'const std::string &sdds::Pair::getValue(void)': cannot convert 'this' pointer from 'const sdds::Pair' to 'sdds::Pair &'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(149,52): message : Conversion loses qualifiers
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\Pair.h(20,22): message : see declaration of 'sdds::Pair::getValue'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(150,61): error C2662: 'const std::string &sdds::Pair::getKey(void)': cannot convert 'this' pointer from 'const sdds::Pair' to 'sdds::Pair &'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(150,52): message : Conversion loses qualifiers
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\Pair.h(19,22): message : see declaration of 'sdds::Pair::getKey'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(151,63): error C2662: 'const std::string &sdds::Pair::getValue(void)': cannot convert 'this' pointer from 'const sdds::Pair' to 'sdds::Pair &'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(151,52): message : Conversion loses qualifiers
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\Pair.h(20,22): message : see declaration of 'sdds::Pair::getValue'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(152,62): error C2662: 'const std::string &sdds::Pair::getKey(void)': cannot convert 'this' pointer from 'const sdds::Pair' to 'sdds::Pair &'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(152,53): message : Conversion loses qualifiers
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\Pair.h(19,22): message : see declaration of 'sdds::Pair::getKey'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(153,64): error C2662: 'const std::string &sdds::Pair::getValue(void)': cannot convert 'this' pointer from 'const sdds::Pair' to 'sdds::Pair &'
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\w3_p2.cpp(153,53): message : Conversion loses qualifiers
+D:\Anna_Git\OOP345\WS03\part 1\w3p1\w3p1\Pair.h(20,22): message : see declaration of 'sdds::Pair::getValue'
