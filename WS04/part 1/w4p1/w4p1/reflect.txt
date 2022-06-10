@@ -1,0 +1,9 @@
+// ------------------------------------------------------
+//Workshop 4 part 2
+//Name   : chinganshih
+//ID     : 148221195
+//Email  : cshih9@myseneca.ca
+//Section: OOP345 NEE
+//-----------------------------------------------------------
+
+In workshop 4, there are three modules, including Toy, Child, and ConfirmOrder. The relationship between Child and Toy is composition. Child is composer and have own Toy pointer. Each element of array pointer is ¡§copy¡¨ of Toys in Child. After updating number of Toy, Toy pointer in Child won¡¦t be affected. The relationship between Toy and ConfirmOrder is aggregation. Each element of array pointer is ¡§original¡¨ of Toys in ConfirmOrder, so it will be affected after updating different number of Toy. Toy has or may have confirmOrder, but can exist without any. As mentioned above, they are in different relationship with class Toy, so we should implement different approach in move and copy functions in a composition and an aggregation. In composition, we create a ¡§copy¡¨ of Toy pointing to different address in Child by toys[i] = new Toy(*c.toys[i]);. I got a memory leak in this line. The reason is that I did not delete each index of toys[] first and allocate new memory to it. After delete toys[] first, delete[] toys, assign new memory to toys, and copy each index into Toy pointer, I fix my memory leak. For aggregation, the Toy pointer is from the original Toy, so it will point to same address as Toy class. Thus, I did ¡§toys = new const Toy * [o.count];¡¨ and assign same memory to each index by using ¡§toys[i] = o.toys[i];¡¨. 
