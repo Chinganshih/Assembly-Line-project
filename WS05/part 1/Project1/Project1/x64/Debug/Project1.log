@@ -1,0 +1,6 @@
+﻿  Book.cpp
+  Movie.cpp
+  w5_p2.cpp
+D:\Anna_Git\OOP345\WS05\part 1\Project1\Project1\w5_p2.cpp(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+  Generating Code...
+  Project1.vcxproj -> D:\Anna_Git\OOP345\WS05\part 1\Project1\x64\Debug\w5p1.exe

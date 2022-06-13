@@ -1,0 +1,22 @@
+// ------------------------------------------------------
+//Workshop 5 part 2
+//Name   : chinganshih
+//ID     : 148221195
+//Email  : cshih9@myseneca.ca
+//Section: OOP345 NEE
+//-----------------------------------------------------------
+
+1. The functor is called function object which is a class or struct and it can be called like a function. We create a functor called SpellChecker which is a class and we overload its () operator, which allows us to use it like a function. In both Movie and Book header file, we create a template ¡§template <typename T> void fixSpelling(T& spellChecker)¡¨. Inside this template, we call it (spellChecker(mdesc); spellChecker(mtitle);) as a function to fix spelling mistakes. On the other hand, the lambda expression allows us to create an inline function which only used in a local area of an application. We create a lambda expression like below 
+auto lambda = [&](Book& b) {
+	if (b.country() == "US"){b.price() *= usdToCadRate;}
+	else if (b.year() >= 1990 && b.year() <= 1999){b.price() *= gbpToCadRate;}
+};
+It will receive a Book reference and update the price inside the function
+After creating lambda expression, we iterate over the library and update the price using it. for (auto i = 0u; i < count-1; i++){lambda(library[i]);}
+As mentioned above, those are the implementation of a functor and lambda expression in this workshop. However, we can notice the difference between them is lambda¡¦s should be stored in variable and define the function inside. When it comes to more complex algorithms, lambda might be harder to read compared to the functor. Because functor is self-documenting by default, it will be more flexible to build more complex program. Thus, for simple function needed in local scope only without dynamic polymorphism and more complex structure is good time to use Lambda expression. Otherwise, the functor can be more readable and flexible to build more complex functionality.
+
+2. SpellChecker will generate an exception when the file name is invalid. What I did is to throw an error with char* message. Another way to do it without exception could set SpellChecker to a safe empty state if an invalid file name is sent to the default constructor. Add the condition in default constructor to make sure valid file name. By this way, other attribute won’t be affected after the constructor is finished. In main(), if the object is null, print out the error message.
+
+3. It might be a solution to create another Class and both Movie and Book inherit from it. By this way, we just need to create almost identical logic in one place to avoid duplication. 
+
+4. Both Movie and Book contain their own default constructor which have different attributes. If we remove it, we couldn’t access to their own attributes. It is necessary to create a default constructor for both classes. The purpose of using a custom constructor from Collection template is that collection of Book and Movie have same attributes (i.e. name, items, size, callback), so we don’t need to create same code for different data type. For example, while calling the callback function for both movie and book, inside void setObserver(void (*inobserver)(const Collection<T>& , const T&)) { observer = inobserver; } we store the address of the callback function(observer) into an attribute for movie and book. The observer function for movie will be movieAddedObserver(), and another observer function for book will be bookAddedObserver(). So, after registering the call back, when event happened, the rest of item will call the call back function to print out data. By using a custom constructor from template, both Book and Movie can use same class to create their own collection.
