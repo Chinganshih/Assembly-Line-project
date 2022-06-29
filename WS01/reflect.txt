@@ -1,0 +1,9 @@
+// ------------------------------------------------------
+//Workshop 1 reflection
+//Name   : chinganshih
+//ID     : 148221195
+//Email  : cshih9@myseneca.ca
+//Section: OOP345 NEE
+//-----------------------------------------------------------
+
+In workshop 1, we need to declare two global variables called g_taxrate and g_dailydiscount. In this case, I use external linkage in a different scope by keyword extern in foodorder module. Also, we should declare external linkage declaration in header file, and declare extern linkage definition in cpp file. Moreover, I declare an internal linkage for counter in my display function ¡§static int counter = 0¡¨. It will be visible to other scopes within its translation unit, so it can keep counting in different scopes. For part 2, I change description variable to an array pointer to store any length of size. By using dynamic memory, we can manage our memory more efficiently. For some reason, I face a memory leak while reading data in read function. I went through each line to check how they pass data, store, and deallocate it. I found some delivery order didn¡¦t be deallocated properly, so it causes memory leak. After dealing with those issues, I learn how to use external linkage, internal linkage, and avoid memory leak from workshop 1.
