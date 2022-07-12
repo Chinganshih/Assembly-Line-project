@@ -7,8 +7,8 @@
 //-----------------------------------------------------------
 
 #include "Utilities.h"
-#include "Car.h"
 #include "Racecar.h"
+#include "Car.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -35,8 +35,6 @@ namespace sdds {
 		tag.erase(remove(tag.begin(), tag.end(), ' '),tag.end());
 		sstr.seekg(0);
 
-		
-
 		if (tag == "c" || tag == "C")
 		{
 			car = new Car(sstr);
@@ -51,4 +49,8 @@ namespace sdds {
 
 		return car;
 	}
+
+	
+	
+	
 }

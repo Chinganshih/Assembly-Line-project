@@ -29,7 +29,6 @@ namespace sdds {
 		
 
 	};
-	extern Car c;
 	
 }
 

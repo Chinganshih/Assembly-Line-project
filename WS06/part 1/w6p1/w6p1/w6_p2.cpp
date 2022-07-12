@@ -23,7 +23,7 @@ void loadData(const char* filename, sdds::Autoshop& as)
 		std::cerr << "ERROR: Cannot open file [" << filename << "].\n";
 		return;
 	}
-	while(file)
+	while (!file.eof())
 	{
 		// TODO: This code can throw errors to signal that something went wrong while
 		//         extracting data. Write code to catch and handle the following errors:
