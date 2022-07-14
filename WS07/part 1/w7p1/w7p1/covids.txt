@@ -82,7 +82,7 @@ Canada                   Hamilton                 Gamma                    -432 
 China                    Wuhan                    Omicron                  2019 222  122
 China                    Wuhan                    Omicron                  2020 777  177
 Australia                Perth                    Omicron                  2020 954  154
-Japan                    Osaka                    Delta                    2021 765  165 
+Japan                    Osaka                    Omicron                    2021 765  165 
 Australia                Perth                    Omicron                  2021 898  198
 Canada                   Toronto                  Alpha                    2021 844  144
 Qatar                    Doha                     Omicron                  -44  432  12
