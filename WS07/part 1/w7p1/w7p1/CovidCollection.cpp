@@ -102,7 +102,7 @@ namespace sdds {
 
 	//removes the token[None] from the variant field of the covids that do not have a valid variant
 	void CovidCollection::cleanList() {
-		
+	
 		transform(m_covid.begin(), m_covid.end(), m_covid.begin(), [](Covid& c) {
 			(c.variant == "[None]") ? c.variant = "" : c.variant = c.variant;
 			return c;

@@ -21,6 +21,7 @@ namespace sdds {
 	{
 		struct Covid
 		{
+
 			std::string country;
 			std::string city;
 			std::string variant;

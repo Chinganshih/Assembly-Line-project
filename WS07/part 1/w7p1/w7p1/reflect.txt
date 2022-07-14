@@ -1,0 +1,27 @@
+// ------------------------------------------------------
+//Workshop 7 part 2
+//Name   : chinganshih
+//ID     : 148221195
+//Email  : cshih9@myseneca.ca
+//Section: OOP345 NEE
+//-----------------------------------------------------------
+1. list all the STL functions that you have used in this workshop; explain your reasoning for choosing each one, and not another.
+A. for_each(m_covid.begin(), m_covid.end(), [](Covid c){ cout << c << endl; });
+In display function, we just need to display each data without any calculation. For_each is the easiest way to implement with lambda expression. Other STL algorithms will be too complicated for display.
+B. totalCase = accumulate(m_covid.begin(), m_covid.end(), 0, [](const int& result, const Covid& c) {return result + c.numberOfCases;});
+I implement std::accumulate to accumulate totalcases and totalDeaths. Either for_each and accumulate can work; however, accumulate will be more straightforward to accumulate the total. Also, other numeric library, such as inner_product and partial_sum, don・t fit our purpose to sum the total of cases.
+C. sort(m_covid.begin(), m_covid.end(), [](const Covid& c1, const Covid& c2) {return  c1.country < c2.country; });
+For sorting by different name of the field, we should implement the sort function. We don・t use std::merge at this point because std::merge is to combine elements in two different ranges. There is only one collection in CovidCollection, so we only implement sort function.
+D. transform(m_covid.begin(), m_covid.end(), m_covid.begin(), [](Covid& c) {(c.variant == "[None]") ? c.variant = "" : c.variant = c.variant; return c;});
+In cleanList function, we should remove the token [None] from the variant field of the covids. In the beginning, I implement std::replace_if to replace [None]; however, the replacement value is a single consistent value which doesn・t necessarily fit in this case easily. Thus, I changed to std::transform to replace the invalid variant to empty string and transform to the original vector.
+E. find_if(m_covid.begin(), m_covid.end(), [name](const Covid& c) { return c.variant == name; }) != m_covid.end()) ? true:  false;
+In inCollection function, it receives the name of variant and returns true if the collection contains the city with that variant. By using find_if, we can find out the element that satisfies our predicate. If we implement std::find, we can・t set our predicate. Another opposite function called find_if_not, it is better way to do when we need to find out if the collection contains the city ：without； that variant.
+F. copy_if(m_covid.begin(), m_covid.end(), back_inserter(newcovid), [country](const Covid& c) { return c.country == country; });
+we want to create a new list that contains the name of a country in the collection. We can implement copy_if or transform to copy the matched data into the new list. Since we have already implement std::transform in previous function. We can copy all of the elements that satisfy predicate within range m_covid into a new list. 
+
+2. present the advantages of using STL algorithms vs. implementing the functionality by yourself using loops.
+By using STL algorithms, we can improve correctness and expressiveness of our code. For example, when we try to make a copy from one collection into another collection. In For loop, we should declare vector::iterator and set begin() and end(), also we need to write push_back() within the loop. However, we just simply call std::copy(vector.begin(), vector.end(), back_inserter(newvector)) in STL algo to implement the same result.  
+STL algo can avoid some common errors, if there is no element to iterate over, a custom iterator might cause errors, but all algorithms can handle these for us. Moreover, the STL algorithms reduce the lines of codes, make your code more readable, and get the implementation of a certain level of quality. For example, if we write the sort by a custom for loop, we probably wrote multiple lines of code to implement it, but the STL algo provides std::sort. It is only one line and other programmers can easily understand we are doing sorting.
+
+3. the function that sorts the collection of covids receives as a parameter the field name to use; this can create errors if the client specifies an invalid field (or misspells it). How would you redesign that function to prevent the client to specify an invalid string, allowing any error to be detected by the compiler?
+At this point, we can use std::find_if before sorting. If the field of name can be found in the collection, we can continue to sort it. However, if std::find_if returns false, we can throw the error to display it is an invalid field. By this method, we can avoid an invalid string from creating errors while sorting. 
