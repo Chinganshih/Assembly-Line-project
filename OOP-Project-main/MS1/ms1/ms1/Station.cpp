@@ -25,9 +25,9 @@ namespace sdds {
 	{
 	}
 
-	Station::Station(string& str) {
+	Station::Station(const string& instr) {
 
-		string strserialNumber, strQuantity;
+		string str = instr, strserialNumber, strQuantity;
 		size_t next_pos = 0;
 		bool more = 1;
 
@@ -62,10 +62,14 @@ namespace sdds {
 		return name;
 	}
 
-	//returns the next serial number to be used on the assembly lineand increments m_serialNumber
+	//returns the next serial number to be used on the assembly line and increments m_serialNumber
 	size_t Station::getNextSerialNumber() {
 		
 		return m_serialNumber++;
+	}
+
+	size_t Station::getSerialNumber() const {
+		return m_serialNumber;
 	}
 
 	//returns the remaining quantity of items in the Station object
@@ -82,7 +86,7 @@ namespace sdds {
 		//if the second parameter is false, this function inserts only the ID, name, and serial number in the format :
 		//ID | NAME | SERIAL |
 
-		os << setfill('0') << setw(3) << id << " | ";
+		os << setfill('0') << setw(3) << right << id << " | ";
 		os << setfill(' ') << setw(m_widthField+1) << left <<  name << " | ";
 		os << setfill('0') << setw(6) <<right << m_serialNumber << " | ";
 

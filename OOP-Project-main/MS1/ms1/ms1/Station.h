@@ -30,10 +30,11 @@ namespace sdds {
 			
 	public:
 		Station();
-		Station(std::string& str);
+		Station(const std::string& instr);
 		~Station();
 		const std::string& getItemName() const;
 		size_t getNextSerialNumber();
+		size_t getSerialNumber() const;
 		size_t getQuantity() const;
 		void updateQuantity();
 		void display(std::ostream& os, bool full) const;
