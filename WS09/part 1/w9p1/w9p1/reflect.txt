@@ -1,0 +1,53 @@
+// ------------------------------------------------------
+//Workshop 9 part 2
+//Name   : chinganshih
+//ID     : 148221195
+//Email  : cshih9@myseneca.ca
+//Section: OOP345 NEE
+//-----------------------------------------------------------
+
+1. was there any benefit from using binary files in this workshop?
+We can read or write the file in text or binary mode; however, why the binary mode can be faster and easier for complier? By using binary files, we can use binary access to transfer data to and from memory without any formatting. 
+
+For example, 
+ifstream binary_file(filename, ios::binary);)
+binary_file.read((char*)&total_items, sizeof(int));
+data = new int[total_items + 1];
+
+while (!binary_file.eof() && binary_file.good())
+{
+	binary_file.read((char*)&data[numberOfdata], sizeof(int));
+	numberOfdata++;
+}
+binary_file.close();
+First 4 bytes (int size) will be total_item, and each data-item is of 4 bytes (int size). It would get 4 bytes each read(). There is no conversion, insertion, or extraction of record or field separators. Binary will be faster to read and write. If we use the text mode, it has to be converted from a string of character to the binary to store in memory. Meanwhile, it does same steps while writing into the file. If we have thousands of data to read and write, the text mode will take longer and exist the additional time to convert back to binary for storage. However, the binary files don¡¦t need to convert and also it takes less time to read in.
+
+2. why would be important to bind a function to its arguments, and how was it useful in this workshop
+Bind function can help us manipulate the operation of a function based on our need. We can predefine a function to have default arguments. 
+For example, 
+auto computeAvgFactorFn = bind(computeAvgFactor, _1, _2, total_items, _3);
+auto computeVarFactorFn = bind(computeVarFactor, _1, _2, total_items, avg, _3);
+
+Firstly, we bind the total_item to the function computeAvgFactor() as the divisor parameter and use placeholder for the rest of parameter. Secondly, we also bind the total_item and the computed average as computeVarFactor¡¦s parameters. It will be useful and easier to handle the parameters. When we call computeAvgFactorFn and computeVarFactorFn to set the changed parameters through multi-threading, the bind function will automatically pass the predefined parameters into the function.
+
+3. the advantages of using multiple threads, and how did you accomplish multi-threading in this workshop
+In part 2, we compute average and variance through multi-threading and it allows the execution of different parts of data at the same time. Each thread can execute concurrently with other threads and share the same resource with other threads. It spawns multiple child threads from its main thread, executes all tasks and waits in its main thread for the spawned threads to finish. It can avoid thread blocking calls that take a long time to return. Also, It can simulate multiple clients connecting to application at a time. Most importantly, it can improve performance and concurrency. From the output, we can notice that using more threads take less time to compute.  
+
+For example, 
+std::vector<thread> threads(num_threads);
+for (int i = 0; i < num_threads; i++)
+{
+threads[i] = thread(computeAvgFactorFn, &data[p_indices[i]], 	p_indices[i+1] - p_indices[i], ref(averages[i]));
+}
+for (auto& th : threads )
+{
+	th.join();
+}
+for (int i = 0; i < num_threads; i++)
+{
+	avg += averages[i];
+}
+I create a vector of thread with num_threads. Create thread to compute different parts of the data items divided by partition-indices. After that, join each thread and accumulate each average into total average at the end. Anther computation of variance through multi-threading does same steps. Through the multi-threaded computation, the time required is less. 
+
+4. observation of the computation times with three different values of the above parameters.
+std::this_thread::sleep_for(std::chrono::nanoseconds(x)) -> this function provides the specified sleep_duration to block the execution of the current thread. I have tried different value for std::this_thread::sleep_for(std::chrono::nanoseconds(1)); When I implement 1, 10, 50 for sleeping time, the computation times is always around 700-900 milliseconds, which is not obvious result. However, I implement 500 for sleeping time, the computation times jump to 4333 milliseconds for using 1 thread, 2166 milliseconds for using 2 threads, and 1379 milliseconds for using 4 threads. The longer sleeping time we put, the longer time requires to compute. 
